@@ -3,6 +3,8 @@ package me.yingrui.learning.graphql;
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 import graphql.GraphQL;
+import graphql.language.FieldDefinition;
+import graphql.language.ObjectTypeDefinition;
 import graphql.schema.GraphQLSchema;
 import graphql.schema.idl.RuntimeWiring;
 import graphql.schema.idl.SchemaGenerator;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 
 import static graphql.schema.idl.TypeRuntimeWiring.newTypeWiring;
 
@@ -45,7 +48,9 @@ public class GraphQLProvider {
     private RuntimeWiring buildWiring() {
         return RuntimeWiring.newRuntimeWiring()
                 .type(newTypeWiring("Query")
-                        .dataFetcher("bookById", graphQLDataFetchers.getBookByIdDataFetcher()))
+                        .dataFetcher("getBookById", graphQLDataFetchers.getBookByIdDataFetcher()))
+                .type(newTypeWiring("Query")
+                        .dataFetcher("books", graphQLDataFetchers.getDataFetcher()))
                 .type(newTypeWiring("Book")
                         .dataFetcher("author", graphQLDataFetchers.getAuthorDataFetcher()))
                 .build();

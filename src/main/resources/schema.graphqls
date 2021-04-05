@@ -1,5 +1,6 @@
 type Query {
-    bookById(id: ID): Book
+    getBookById(id: ID): Book
+    books(_q: String): [Book!]
 }
 
 type Book {
