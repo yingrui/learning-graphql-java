@@ -10,8 +10,8 @@ public class GraphQLProviderTest {
 
     @Test
     public void test() throws IOException {
-        GraphQLProvider graphQLProvider = new GraphQLProvider(graphQLDataFetchers);
-        graphQLProvider.init();
+        GraphQLProvider graphQLProvider = new GraphQLProvider(graphQLDataFetchers, null);
+        graphQLProvider.initBySchema();
     }
 
 }

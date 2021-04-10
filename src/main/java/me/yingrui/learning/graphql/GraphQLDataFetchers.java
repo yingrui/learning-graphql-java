@@ -50,7 +50,7 @@ public class GraphQLDataFetchers {
         };
     }
 
-    public DataFetcher getDataFetcher() {
+    public DataFetcher getDataSearcher() {
         return dataFetchingEnvironment -> {
             String q = dataFetchingEnvironment.getArgument("_q");
             return books
