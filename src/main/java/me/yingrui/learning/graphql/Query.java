@@ -20,7 +20,7 @@ public class Query {
     }
 
     @GraphQLQuery
-    public List<Book> search(@GraphQLArgument(name = "_q") String q) {
-        return bookRepository.search(q, Book.class);
+    public List<Book> search(@GraphQLArgument(name = "_q") String q, @GraphQLArgument(name = "author") String author) {
+        return bookRepository.search(q, author, Book.class);
     }
 }
